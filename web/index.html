@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>끼랭</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"/>
+    <script src="./wwklang.js"></script>
+    <script language="javascript" type="text/javascript" src="./codemirror/codemirror.min.js"></script>
+    <script language="javascript" type="text/javascript" src="./codemirror/wwklang.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./codemirror/codemirror.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="./codemirror/twilight.min.css"></link>
+  </head>
+  <body>
+    <div style="max-width: 600px;width: 100%;margin: 0 auto;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+
+        <div style="align-self: end;">
+          <a href="https://github.com/weensy/wwklang" target="_blank">> 끼랭 깃헙</a>
+        </div>
+        <img src="./wksts.png" alt="혁명" style="max-width: 140px" />
+        <p>
+          <del>우왁끼는 살아있다!!!</del>
+        </p>
+      </div>
+      <p>
+        <h2 style="margin-bottom: 8px">암호</h2>
+        <div style="margin-bottom: 8px">
+          <h4 style="display: inline;">예제: </h3>
+          <button onclick="helloworldSample()">헬로월드</button>
+          <button onclick="fibonacciSample()">피보나치</button>
+          <button onclick="factorialSample()">팩토리얼</button>
+        </div>
+        <textarea id="code" rows="10" style="width: 100%;box-sizing: border-box;"></textarea>
+        <div>
+          <button id="run" style="width: 100%">해독하기</button>
+        </div>
+      </p>
+      <p>
+        <h2 style="margin-bottom: 8px">결과</h2>
+        <textarea id="result" readonly rows="10" style="width: 100%;box-sizing: border-box; background: #141414; color: #f7f7f7; padding: 4px; border-width: 0;"></textarea>
+      </p>
+    </div>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+        lineNumbers: true,
+        mode: 'wwklang',
+        theme: 'twilight',
+      });
+      function updateTextArea() {
+        editor.save();
+      }
+      editor.on('change', updateTextArea);
+      document.getElementById('run').addEventListener('click', function() {
+        var code = document.getElementById('code').value;
+        var result = document.getElementById('result');
+        window.wwk.load(code);
+        window.wwk.run()
+        result.value = window.wwk.result;
+      });
+      const codeHelloWorld = `내가싼똥
+끼끼끼 끼끼끼 끼끼끼끼
+있 우 끼끼 끼끼끼 끼끼 우 끼끼끼 끼끼끼 끼끼끼끼 우 끼끼끼 우 끼 왁왁왁왁 는 다
+우 끼끼 살 우 끼 살 끼끼끼 끼끼끼끼 살 살 끼끼끼 살 우
+끼끼끼 끼끼끼 끼끼끼 끼끼끼 끼끼 살 는는는 는는는 는는는 는는는 살 왁왁
+끼끼끼 끼끼끼 끼끼끼 끼끼끼 끼끼끼 살 우 살 끼끼끼 살 는는는 는는는 살
+는는는 는는는 는는 살 우 끼 살
+침바~`;
+      const codeFibonacci = `내가싼똥
+끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼
+우끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼
+우끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼
+우
+우끼
+왁왁
+있
+우우
+
+우
+우끼끼끼끼끼끼끼끼끼끼
+왁왁
+있는우끼우는있우끼우우다우있끼있는왁끼우다우끼우우다왁왁왁왁왁왁다
+우있왁끼우는다
+우있는다
+
+우우
+우끼끼끼끼끼끼끼끼끼끼
+왁
+있는우는있우끼우우다우있끼있는왁끼우다우끼우우다왁왁왁왁왁다
+우있는다
+우우있끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼살있는다다
+왁있끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼살있는다다
+
+왁왁왁끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼살있는다
+왁왁왁왁왁왁왁살우살
+
+우우있우우끼왁왁는다
+우있우끼왁왁끼우는다
+우있왁끼우는다
+왁왁왁는
+다
+왁왁끼끼살살살
+침바~`;
+      const codeFactorial = `내가싼똥
+끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼
+우끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼
+끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼
+우끼끼끼끼끼끼끼끼끼끼
+우끼끼끼끼끼끼끼
+우
+우끼
+왁왁
+있
+우끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼살
+는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는는
+왁왁왁왁살는살우살왁살끼
+
+우우우우우
+우
+우끼끼끼끼끼끼끼끼끼끼
+왁왁
+있는우끼우는있우끼우우다우있끼있는왁끼우다우끼우우다왁왁왁왁왁왁다
+우있왁끼우는다
+우있는다
+
+우우
+우끼끼끼끼끼끼끼끼끼끼
+왁
+있는우는있우끼우우다우있끼있는왁끼우다우끼우우다왁왁왁왁왁다
+우있는다
+우우있끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼살있는다다
+왁있끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼살있는다다
+왁왁왁끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼끼살있는다
+
+왁왁왁왁왁왁살
+우우끼
+
+우있우우끼왁왁는다
+우우
+있
+왁왁왁있우끼우끼왁왁는다
+우우있왁왁끼우우는다
+우는
+다
+왁왁왁왁는
+다
+침바~`;
+      function helloworldSample() {
+        editor.setValue(codeHelloWorld);
+      }
+      function fibonacciSample() {
+        editor.setValue(codeFibonacci);
+      }
+      function factorialSample() {
+        editor.setValue(codeFactorial);
+      }
+    </script>
+  </body>
+</html>
